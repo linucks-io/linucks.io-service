@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "alias-rahil",
+      "name": "Rahil Kabani",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59060219?v=4",
+      "profile": "https://alias-rahil.github.io/",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "linucks.io-service",
+  "projectOwner": "linucks-io",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
