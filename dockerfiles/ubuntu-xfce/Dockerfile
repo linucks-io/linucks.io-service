@@ -13,7 +13,7 @@ RUN apt update && \
     apt autoclean && \
     apt autoremove && \
     useradd -M -d /home/linucksIo linucksIo && \
-	usermod -s /bin/bash linucksIo
+    usermod -s /bin/bash linucksIo
 
 RUN git clone https://github.com/novnc/noVNC.git /noVNC
 

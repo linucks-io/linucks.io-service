@@ -93,7 +93,7 @@ export default class ECSManager {
         const { services } = await this.describeServices() as any;
 
         const createdTask: any = await this.runTask(
-            'remote-distro',
+            roomName,
             services[0].networkConfiguration,
             [{
                 key: 'roomName',
