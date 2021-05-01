@@ -23,6 +23,8 @@ const ecsManager = new ECSManager();
 const domainManager = new DomainManager(BASE_DOMAIN);
 domainManager.register('api', `http://127.0.0.1:${PORT}`);
 
+const distros = ['ubuntu-xfce', 'arch-i3'];
+
 app.post('/provision', async (req, res) => {
     let { distroName: roomName = '' } = req.body;
 
@@ -30,7 +32,12 @@ app.post('/provision', async (req, res) => {
     console.log({ roomName });
 
     if (!roomName) {
-        res.json({ success: false, message: 'Invalid URL.' });
+        res.status(400).json({ success: false, data: {}, message: `Please provide distro name. Available: ${distros.join(', ')}.` });
+        return;
+    }
+
+    if (!distros.includes(roomName)) {
+        res.status(404).json({ success: false, message: `Only ${distros.join(', ')} are available for now.`, data: distros });
         return;
     }
 
