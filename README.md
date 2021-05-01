@@ -106,6 +106,16 @@ npm install
 npm start
 ```
 
+## Deployment
+
+1. 
+
+```sh
+# create deployment/terraform.tfvars file with vars declared in deployment/variables.tf file
+cd deployment
+terraform apply --auto-approve
+```
+
 <!-- ROADMAP -->
 ## Roadmap
 
