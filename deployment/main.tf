@@ -262,41 +262,6 @@ resource "aws_ecs_task_definition" "arch-i3" {
 DEFINITION
 }
 
-resource "aws_ecs_task_definition" "kali-gnome" {
-  family                   = "kali-gnome"
-  network_mode             = "awsvpc"
-  requires_compatibilities = ["FARGATE"]
-  cpu                      = var.distro_cpu
-  memory                   = var.distro_memory
-
-  execution_role_arn = var.execution_role_arn
-
-  container_definitions = <<DEFINITION
-[
-  {
-    "name": "kali-gnome",
-    "image": "${var.remote_kali_gnome_docker}",
-    "portMappings": [
-      {
-        "hostPort": 6080,
-        "protocol": "tcp",
-        "containerPort": 6080
-      }
-    ],
-    "essential": true, 
-    "entryPoint": [], 
-    "command": [],
-    "environment": [
-      {
-        "name": "VNC_SCREEN_SIZE",
-        "value": "1366x768"
-      }
-    ]
-  }
-]
-DEFINITION
-}
-
 resource "aws_ecs_service" "backend-service" {
   name                  = "backend-service"
   cluster               = aws_ecs_cluster.main.id

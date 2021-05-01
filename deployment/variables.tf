@@ -15,10 +15,6 @@ variable "remote_arch_i3_docker" {
   type = string
 }
 
-variable "remote_kali_gnome_docker" {
-  type = string
-}
-
 variable "remote_ubuntu_xfce_docker" {
   type = string
 }
