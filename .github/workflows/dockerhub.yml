@@ -1,7 +1,7 @@
 name: Deploy challenge on gke
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,6 +13,7 @@ jobs:
       - run: |
           git config --global user.email "actions@action.com"
           git config --global user.name "github-action"
+          cd dockerfiles/ubuntu-xfce
           docker build -t linucks-io-ubuntu-xfce:latest .
           docker tag linucks-io-ubuntu-xfce:latest aliasrahil/linucks-io-ubuntu-xfce:latest
           docker push aliasrahil/linucks-io-ubuntu-xfce:latest
