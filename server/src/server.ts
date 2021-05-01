@@ -23,7 +23,7 @@ const ecsManager = new ECSManager();
 const domainManager = new DomainManager(BASE_DOMAIN);
 domainManager.register('api', `http://127.0.0.1:${PORT}`);
 
-const distros = ['ubuntu-xfce', 'arch-i3', 'kali-xfce'];
+const distros = ['ubuntu-xfce', 'arch-i3', 'kali-gnome'];
 
 app.post('/provision', async (req, res) => {
     let { distroName: roomName = '' } = req.body;

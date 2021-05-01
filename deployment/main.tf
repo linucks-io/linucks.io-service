@@ -262,8 +262,8 @@ resource "aws_ecs_task_definition" "arch-i3" {
 DEFINITION
 }
 
-resource "aws_ecs_task_definition" "kali-xfce" {
-  family                   = "kali-xfce"
+resource "aws_ecs_task_definition" "kali-gnome" {
+  family                   = "kali-gnome"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.distro_cpu
@@ -274,8 +274,8 @@ resource "aws_ecs_task_definition" "kali-xfce" {
   container_definitions = <<DEFINITION
 [
   {
-    "name": "kali-xfce",
-    "image": "${var.remote_kali_xfce_docker}",
+    "name": "kali-gnome",
+    "image": "${var.remote_kali_gnome_docker}",
     "portMappings": [
       {
         "hostPort": 6080,
