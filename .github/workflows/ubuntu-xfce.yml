@@ -1,4 +1,3 @@
-name: Deploy challenge on gke
 on:
   push:
     branches: [master]
@@ -7,12 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git fetch --all --tag
-      - name: Login to DockerHub Registry
-        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      - run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - run: |
-          git config --global user.email "actions@action.com"
-          git config --global user.name "github-action"
           cd dockerfiles/ubuntu-xfce
           docker build -t linucks-io-ubuntu-xfce:latest .
           docker tag linucks-io-ubuntu-xfce:latest aliasrahil/linucks-io-ubuntu-xfce:latest
