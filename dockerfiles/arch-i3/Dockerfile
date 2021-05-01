@@ -8,6 +8,7 @@ RUN pacman -S --noconfirm \
     git \
     net-tools \
     python3 \
+    xterm \
     rxvt-unicode \
     supervisor \
     ttf-dejavu \
