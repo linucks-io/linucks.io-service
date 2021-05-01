@@ -15,6 +15,10 @@ variable "remote_arch_i3_docker" {
   type = string
 }
 
+variable "remote_kali_xfce_docker" {
+  type = string
+}
+
 variable "remote_ubuntu_xfce_docker" {
   type = string
 }
@@ -38,11 +42,11 @@ variable "distro_memory" {
 }
 
 variable "base_domain" {
-  type    = string
+  type = string
 }
 
 variable "public_domain" {
-  type    = string
+  type = string
 }
 
 variable "logs_retention_in_days" {
