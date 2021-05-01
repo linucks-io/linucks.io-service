@@ -6,7 +6,7 @@ export X11VNC_AUTH="-nopw"
 
 # look for VNC password file in order (first match is used)
 passwd_files=(
-  /home/linucksIo/.vnc/passwd
+  /home/linucksio/.vnc/passwd
   /run/secrets/vncpasswd
 )
 
@@ -22,12 +22,12 @@ if [[ "$VNC_PASSWORD" != "" ]]; then
   export X11VNC_AUTH="-passwd $VNC_PASSWORD"
 fi
 
-# set sizes for both VNC screen & linucksIo window
+# set sizes for both VNC screen & linucksio window
 : ${VNC_SCREEN_SIZE:='1024x768'}
 IFS='x' read SCREEN_WIDTH SCREEN_HEIGHT <<< "${VNC_SCREEN_SIZE}"
 export VNC_SCREEN="${SCREEN_WIDTH}x${SCREEN_HEIGHT}x24"
-export linucksIo_WINDOW_SIZE="${SCREEN_WIDTH},${SCREEN_HEIGHT}"
+export linucksio_WINDOW_SIZE="${SCREEN_WIDTH},${SCREEN_HEIGHT}"
 
-export linucksIo_OPTS="${linucksIo_OPTS_OVERRIDE:- --user-data-dir --no-sandbox --window-position=0,0 --force-device-scale-factor=1 --disable-dev-shm-usage}"
+export linucksio_OPTS="${linucksio_OPTS_OVERRIDE:- --user-data-dir --no-sandbox --window-position=0,0 --force-device-scale-factor=1 --disable-dev-shm-usage}"
 
 exec "$@"
