@@ -4,8 +4,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/csivitu/Template">
-    <img src="https://i.ibb.co/41wHGgQ/logo.png"  alt="Logo" width="80">
+  <a href="https://github.com/linucks-io/">
+    <img src="https://i.ibb.co/41wHGgQ/logo.png"  alt="Logo" width="200">
   </a>
 
   <h1 align="center">linucks.io-service</h1>
