@@ -1,7 +1,7 @@
 name: Deploy challenge on gke
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,6 +14,12 @@ jobs:
           git config --global user.email "actions@action.com"
           git config --global user.name "github-action"
           cd server
+          mkdir certs
+          echo -e $FULLCHAIN_PEM | base64 -d >> ./certs/fullchain.pem
+          echo -e $PRIVKEY_PEM | base64 -d >> ./certs/privkey.pem
           docker build -t linucks-io-backend:latest .
           docker tag linucks-io-backend:latest aliasrahil/linucks-io-backend:latest
           docker push aliasrahil/linucks-io-backend:latest
+        env:
+          FULLCHAIN_PEM: ${{ secrets.FULLCHAIN_PEM }}
+          PRIVKEY_PEM: ${{ secrets.PRIVKEY_PEM }}

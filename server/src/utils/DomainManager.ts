@@ -1,8 +1,16 @@
 import redbird from 'redbird';
+import { resolve } from 'path';
+import fs from 'fs';
 
 const {
     REDBIRD_PORT = '80',
+    NODE_ENV = 'testing',
 } = process.env;
+
+if (NODE_ENV === 'production') {
+    console.log(fs.readFileSync(resolve(__dirname, '..', '..', 'certs', 'privkey.pem'), { encoding: 'utf-8' }));
+    console.log(fs.readFileSync(resolve(__dirname, '..', '..', 'certs', 'fullchain.pem'), { encoding: 'utf-8' }));
+}
 
 export default class DomainManager {
     public baseDomain: string;
@@ -10,11 +18,20 @@ export default class DomainManager {
     public proxy: any;
 
     constructor(baseDomain: string) {
-
-        this.proxy = redbird({
-            port: parseInt(REDBIRD_PORT, 10),
-            xfwd: false,
-        });
+        this.proxy = NODE_ENV === 'production'
+            ? redbird({
+                port: parseInt(REDBIRD_PORT, 10),
+                xfwd: false,
+                ssl: {
+                    key: resolve(__dirname, '..', '..', 'certs', 'privkey.pem'),
+                    cert: resolve(__dirname, '..', '..', 'certs', 'fullchain.pem'),
+                    port: 443,
+                },
+            })
+            : redbird({
+                port: parseInt(REDBIRD_PORT, 10),
+                xfwd: false,
+            });
 
         this.baseDomain = baseDomain;
     }
