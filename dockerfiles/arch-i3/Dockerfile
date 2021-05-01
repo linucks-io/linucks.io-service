@@ -15,7 +15,9 @@ RUN pacman -S --noconfirm \
     xorg-server \
     xorg-apps \
     xorg-server-xvfb \
-    xorg-xinit
+    xorg-xinit && \
+    useradd -M -d /home/linucksIo linucksIo && \
+    usermod -s /bin/bash linucksIo
 
 RUN git clone https://github.com/novnc/noVNC.git /noVNC
 
@@ -24,9 +26,6 @@ COPY config /
 ENV VNC_SCREEN_SIZE 1366x768
 
 EXPOSE 5900
-
-RUN useradd -m linucksIo
-WORKDIR /home/linucksIo
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
